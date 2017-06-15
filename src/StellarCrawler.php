@@ -1,7 +1,7 @@
 <?php
 require "StellarLink.php";
 
-public class StellarCrawler {
+class StellarCrawler {
 	private $history;
 	private $links;
 	private $data;
@@ -9,19 +9,19 @@ public class StellarCrawler {
 	public function __construct($publicKey, $ispublic = true) {
 		$server = ($ispublic)?'https://horizon.stellar.org/accounts/':'https://horizon-testnet.stellar.org/accounts/';
 		$link = new StellarLink($server.$publicKey, $this);
-		$link.follow();
+		$link->follow();
 	}
 	
 	public function load($json){
-		$this->data = $json->body;
+		$this->data = $json;
 		$c = count($this->history);
 		
-		$this->links = (c > 2)
-			? [['key' : 'back','link' : $this->history[c-2]]]
+		$this->links = ($c > 2)
+			? [['key' => 'back','link' => $this->history[$c-2]]]
 			: [];
 		
 		foreach($this->data->_links as $key => $n){
-			$this->links[] = ['key' : $key,'link' :new StellarLink((strrpos($n, '{') != false)?substr($n,0,strrpos($n, '{')+1) :$n, $this)];
+			$this->links[] = ['key' => $key,'link' => new StellarLink((strrpos($n->href, '{') != false)?substr($n->href,0,strrpos($n->href, '{')+1) :$n->href, $this)];
 		}
 	}
 	

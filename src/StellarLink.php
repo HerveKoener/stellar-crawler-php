@@ -1,7 +1,7 @@
 <?php
 include('./httpful.phar');
 
-public class StellarLink {
+class StellarLink {
 	private $href;
 	private $crawler;
 	
@@ -19,6 +19,6 @@ public class StellarLink {
 			$h[] = $this;
 		}
 
-		$crawler->load(\Httpful\Request::get(http_build_url($this->href))->send()->body);
+		$this->crawler->load(\Httpful\Request::get($this->href)->send()->body);
 	}
 }

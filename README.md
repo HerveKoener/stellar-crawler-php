@@ -17,7 +17,7 @@ $crawler = new StellarCrawler($publicKey, $isPublicNetwork);
 
 Then $crawler->links can be used to navigate through the Stellar network:
 
-```javascript
+```php
 $crawler->getlinks()[0]['link']->follow();
 ```
 
@@ -29,6 +29,10 @@ StellarCrawler->getlinks() contains an array of array with:
  * The link : the link object used during the navigation
 
 StellarCrawler->getData() contains the json representation of the data sent by the Stellar network.
+
+```php
+var_dump($crawler->getData());
+```
 
 See the example for more information.
 
