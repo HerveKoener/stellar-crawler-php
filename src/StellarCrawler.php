@@ -17,11 +17,11 @@ class StellarCrawler {
 		$c = count($this->history);
 		
 		$this->links = ($c > 2)
-			? [['key' => 'back','link' => $this->history[$c-2]]]
+			? ['back' => $this->history[$c-2]]
 			: [];
 		
 		foreach($this->data->_links as $key => $n){
-			$this->links[] = ['key' => $key,'link' => new StellarLink((strrpos($n->href, '{') != false)?substr($n->href,0,strrpos($n->href, '{')+1) :$n->href, $this)];
+			$this->links[$key] = new StellarLink((strrpos($n->href, '{') != false)?substr($n->href,0,strrpos($n->href, '{')) :$n->href, $this);
 		}
 	}
 	

@@ -4,7 +4,7 @@ This is a simple read-only PHP API for the stellar network.
 
 ## Dependencies
 
-This library only need httpful: http://phphttpclient.com/
+This library has no dependencies.
 
 ## Usage
 
@@ -18,7 +18,7 @@ $crawler = new StellarCrawler($publicKey, $isPublicNetwork);
 Then $crawler->links can be used to navigate through the Stellar network:
 
 ```php
-$crawler->getlinks()[0]['link']->follow();
+$crawler->getlinks()['next']->follow();
 ```
 
 ## Properties description

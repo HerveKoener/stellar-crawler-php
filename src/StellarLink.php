@@ -1,5 +1,4 @@
 <?php
-include('./httpful.phar');
 
 class StellarLink {
 	private $href;
@@ -18,7 +17,12 @@ class StellarLink {
 		}else if($h[$c-1] != $this){
 			$h[] = $this;
 		}
-
-		$this->crawler->load(\Httpful\Request::get($this->href)->send()->body);
+		
+		$result = file_get_contents($this->href);
+		$this->crawler->load(json_decode($result));
+	}
+	
+	public function getHref(){
+		return $this->href;
 	}
 }
