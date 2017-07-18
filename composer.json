@@ -1,0 +1,22 @@
+{
+    "name": "quasark/StellarCrawler",
+    "description": "A Readonly API for the Stellar network",
+    "homepage": "https://github.com/HerveKoener/stellar-crawler-php",
+    "license": "MIT",
+    "keywords": ["stellar", "api", "requests"],
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Herve Koener",
+            "homepage": "http://quasark.dorefy.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "StellarCrawler": "src/"
+        }
+    }
+}
