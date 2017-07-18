@@ -1,15 +1,34 @@
 <?php
 require "StellarLink.php";
+require "StellarCrawlerException";
 
 class StellarCrawler {
 	private $history;
 	private $links;
 	private $data;
 	
-	public function __construct($publicKey, $ispublic = true) {
-		$server = ($ispublic)?'https://horizon.stellar.org/accounts/':'https://horizon-testnet.stellar.org/accounts/';
+	private function __construct($publicKey, $horizonServer) {
+		$server = $horizonServer.'/accounts/';
 		$link = new StellarLink($server.$publicKey, $this);
 		$link->follow();
+	}
+	
+	public static newInstance($publicKey, $ispublic = true) {
+		$server = ($ispublic)?'https://horizon.stellar.org':'https://horizon-testnet.stellar.org';
+        return new StellarCrawler($publicKey, $server);
+	}
+	
+	public static newInstanceWithServer($publicKey, $horizonServer) {
+		return new StellarCrawler($publicKey, $server);
+	}
+	
+	private function follow($key){
+		$links = $this->getlinks();
+		if(array_key_exists($key,$links)){
+			$links[$key]->follow();
+		}else{
+			throw new StellarCrawlerException("Link ".$key." not found.");
+		}
 	}
 	
 	public function load($json){
@@ -35,5 +54,17 @@ class StellarCrawler {
 	
 	public function getData(){
 		return $this->data;
+	}
+	
+	public function followNext(){
+		$this->follow('next');
+	}
+	
+	public function followPrev(){
+		$this->follow('prev');
+	}
+	
+	public function followBack(){
+		$this->follow('back');
 	}
 }
