@@ -1,5 +1,5 @@
 {
-    "name": "quasark/StellarCrawler",
+    "name": "quasark/quasark/stellar-crawler",
     "description": "A Readonly API for the Stellar network",
     "homepage": "https://github.com/HerveKoener/stellar-crawler-php",
     "license": "MIT",

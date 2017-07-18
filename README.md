@@ -30,12 +30,12 @@ $crawler = StellarCrawler::newInstance($publicKey, $isPublicNetwork);
 
 **IDEAL FOR: Projects that already support Composer, the sane alternative to PEAR.**
 
-[Composer](https://getcomposer.org/) is starting to emerge as the true people's package manager for PHP. If you aren't already using it, you should give it a shot. Simply add *quasark/StellarCrawler* to *require* in your *composer.json* file like below. After doing so, you're all set to start using Httpful! The autoloader provided by composer takes care of the rest!
+[Composer](https://getcomposer.org/) is starting to emerge as the true people's package manager for PHP. If you aren't already using it, you should give it a shot. Simply add *quasark/stellar-crawler* to *require* in your *composer.json* file like below. After doing so, you're all set to start using Httpful! The autoloader provided by composer takes care of the rest!
 
 ```javascript
 {
     "require": {
-        "quasark/StellarCrawler": "*"
+        "quasark/stellar-crawler": "*"
     }
 }
 ```
