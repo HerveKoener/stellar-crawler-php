@@ -19,7 +19,7 @@ class StellarCrawler {
 	}
 	
 	public static function newInstanceWithServer($publicKey, $horizonServer) {
-		return new StellarCrawler($publicKey, $server);
+		return new StellarCrawler($publicKey, $horizonServer);
 	}
 	
 	private function follow($key){
