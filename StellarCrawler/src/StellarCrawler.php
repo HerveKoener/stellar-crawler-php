@@ -8,6 +8,10 @@ class StellarCrawler {
 	private $data;
 	
 	private function __construct($publicKey, $horizonServer) {
+		if(substr($horizonServer, -1) == '/'){
+			$horizonServer = substr($horizonServer, 0, -1);
+		}
+	
 		$server = $horizonServer.'/accounts/';
 		$link = new StellarLink($server.$publicKey, $this);
 		$link->follow();
