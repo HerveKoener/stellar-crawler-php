@@ -1,6 +1,6 @@
 <?php
 require "StellarLink.php";
-require "StellarCrawlerException";
+require "StellarCrawlerException.php";
 
 class StellarCrawler {
 	private $history;
@@ -13,12 +13,12 @@ class StellarCrawler {
 		$link->follow();
 	}
 	
-	public static newInstance($publicKey, $ispublic = true) {
+	public static function newInstance($publicKey, $ispublic = true) {
 		$server = ($ispublic)?'https://horizon.stellar.org':'https://horizon-testnet.stellar.org';
         return new StellarCrawler($publicKey, $server);
 	}
 	
-	public static newInstanceWithServer($publicKey, $horizonServer) {
+	public static function newInstanceWithServer($publicKey, $horizonServer) {
 		return new StellarCrawler($publicKey, $server);
 	}
 	
